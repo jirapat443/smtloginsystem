@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #f5f6fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: #ffffff;
+            padding: 48px 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .input-group svg {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            stroke: #b0b0b0;
+            pointer-events: none;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px 14px 44px;
+            border: none;
+            border-radius: 999px;
+            background: #f0f1f5;
+            font-size: 14px;
+            font-family: inherit;
+            color: #4a4a4a;
+            outline: none;
+            transition: box-shadow 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #b0b0b0;
+        }
+
+        input:focus {
+            box-shadow: 0 0 0 2px rgba(241, 196, 15, 0.3);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(241, 196, 15, 0.35);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .forgot {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .forgot:hover {
+            color: #f39c12;
+        }
+
+        .divider {
+            margin: 24px 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+        }
+
+        .signup {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .signup a {
+            color: #ff6b8a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 10px;
+            min-height: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <img src="smte-logo.png" alt="SMTE" class="logo">
+        <form id="loginForm">
+            <div class="input-group">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn-login">LOG IN</button>
+            <div class="error-msg" id="errorMsg"></div>
+        </form>
+    </div>
+
+    <script>
+        // ======== CONFIGURE THESE ========
+        const CORRECT_PASSWORD = '242552';
+        const REDIRECT_URL     = 'https://jirapat443.github.io/paymenttrackerkannasootspacail/';
+        // =================================
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (password === CORRECT_PASSWORD) {
+                window.location.href = REDIRECT_URL;
+            } else {
+                errorMsg.textContent = 'Incorrect password. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
